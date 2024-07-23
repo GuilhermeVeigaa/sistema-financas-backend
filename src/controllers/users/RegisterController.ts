@@ -12,10 +12,10 @@ export default {
             const userExist = await prisma.user.findUnique({ where: { email } });
     
             if (userExist) {
-                return res.status(400).json({ error: "Email já cadastrado" });
-            }
+                return res.status(400).json({ error: "Email já cadastrado" })
+            };
     
-            const hashedPass = await bcrypt.hash(password, 10)
+            const hashedPass = await bcrypt.hash(password, 10);
 
 
             const register = await prisma.user.create({
@@ -26,11 +26,11 @@ export default {
                 }
             });
 
-            return res.status(200).json({ message: "Usuário cadastrado com sucesso" })
+            return res.status(200).json({ message: "Usuário cadastrado com sucesso" });
 
 
         } catch (err) {
-            return res.status(500).json({ error: "erro ao cadastrar usuário", details: err.message});
+            return res.status(500).json({ error: "erro ao cadastrar usuário", details: err});
         }
     }
 }
