@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import { routes } from "../routes/routes.js";
 
 const app = express();
@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(routes);
 
-app.get("/", (req: any, res: any) => {
+app.get("/", (req: Request, res: Response) => {
     res.send('connected');
 })
 
