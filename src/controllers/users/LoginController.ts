@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { PrismaClient } from "@prisma/client"
-import bcrypt from "bcrypt"
+import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 
-const prisma = new PrismaClient
+const prisma = new PrismaClient;
 
 export default {
     async addLogin(req: Request, res: Response) {

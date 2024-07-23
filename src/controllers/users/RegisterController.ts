@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client"
-import { Request, Response } from "express"
-import bcrypt from "bcrypt"
+import { PrismaClient } from "@prisma/client";
+import { Request, Response } from "express";
+import bcrypt from "bcrypt";
 
-const prisma = new PrismaClient
+const prisma = new PrismaClient;
 
 export default {
     async addRegister(req: Request, res: Response) {
