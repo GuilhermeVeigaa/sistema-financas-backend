@@ -1,2 +1,7 @@
-/node_modules
-/database
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+/key
