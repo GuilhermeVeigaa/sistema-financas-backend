@@ -5,6 +5,7 @@ import AddExpenses from "../controllers/expenses/AddExpenses";
 import GetExpenses from "../controllers/expenses/GetExpenses";
 import UpdateExpenses from "../controllers/expenses/UpdateExpenses";
 import DeleteExpenses from "../controllers/expenses/DeleteExpenses";
+import { authMiddleware } from "../middlewares/authMiddleware";
 
 
 
@@ -15,6 +16,6 @@ routes.post("/register", RegisterController.addRegister);
 routes.post("/login", LoginController.addLogin);
 
 routes.post("/expenses", AddExpenses.addExpenses);
-routes.get("/expenses", GetExpenses.getExpeses);
+routes.get("/expenses", authMiddleware,GetExpenses.getExpeses);
 routes.put("/expenses:id", UpdateExpenses.updateExpenses);
 routes.delete("/expenses:id", DeleteExpenses.deleteExpenses);
