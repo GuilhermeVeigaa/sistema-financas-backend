@@ -19,19 +19,24 @@ export const authMiddleware = async (
             res.status(401).json({ message: "Acesso não autorizado" })
         };
 
-        const token = authorization.split(' ')[1];
+        try {
+            const token = authorization.split(' ')[1];
 
-        const { id } = jwt.verify(token, authToken()) as JwtPayload
+            const { id } = jwt.verify(token, authToken()) as JwtPayload
+    
+            const user = await prisma.user.findUnique({ where: { id } });
+    
+            if (!user) {
+                return res.status(400).json({ error: "Acesso não autorizado" })
+            };
+    
+            const { password:_, ...loggedUser } = user;
+    
+            req.user = loggedUser
+    
+            next()
+        } catch (err) {
+            return res.status(400).json({ error: "Token Inválido ou expirado" })
+        }
 
-        const user = await prisma.user.findUnique({ where: { id } });
-
-        if (!user) {
-            return res.status(400).json({ error: "Acesso não autorizado" })
-        };
-
-        const { password:_, ...loggedUser } = user;
-
-        req.user = loggedUser
-
-        next()
 }
