@@ -3,6 +3,8 @@ import RegisterController from "../controllers/users/RegisterController";
 import LoginController from "../controllers/users/LoginController";
 import AddExpenses from "../controllers/expenses/AddExpenses";
 import GetExpenses from "../controllers/expenses/GetExpenses";
+import UpdateExpenses from "../controllers/expenses/UpdateExpenses";
+import DeleteExpenses from "../controllers/expenses/DeleteExpenses";
 
 
 
@@ -14,3 +16,5 @@ routes.post("/login", LoginController.addLogin);
 
 routes.post("/expenses", AddExpenses.addExpenses);
 routes.get("/expenses", GetExpenses.getExpeses);
+routes.put("/expenses:id", UpdateExpenses.updateExpenses);
+routes.delete("/expenses:id", DeleteExpenses.deleteExpenses);
