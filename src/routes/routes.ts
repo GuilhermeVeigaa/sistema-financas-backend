@@ -15,7 +15,7 @@ export const routes = express.Router();
 routes.post("/register", RegisterController.addRegister);
 routes.post("/login", LoginController.addLogin);
 
-routes.use(authMiddleware);
+
 
 routes.post("/expenses", AddExpenses.addExpenses);
 routes.get("/expenses", GetExpenses.getExpeses);
