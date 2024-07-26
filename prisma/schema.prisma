@@ -27,6 +27,7 @@ model Expenses{
   id Int @id @default(autoincrement())
   desc String
   value Float
+  type String
 
   @@map("expenses")
 }

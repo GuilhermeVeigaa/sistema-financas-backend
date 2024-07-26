@@ -6,12 +6,13 @@ const prisma = new PrismaClient;
 export default {
     async addExpenses(req: Request, res: Response) {
         try {
-            const { desc, value } = req.body;
+            const { desc, value, type } = req.body;
             
             const add = await prisma.expenses.create({
                 data: {
                 desc: desc,
-                value: value
+                value: value,
+                type: type
                 }
             });
 

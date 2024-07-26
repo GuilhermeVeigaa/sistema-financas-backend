@@ -7,7 +7,7 @@ export default {
     async updateExpenses(req: Request, res: Response) {
         try {
             const { id } = req.params;
-            const { desc, value } = req.body;
+            const { desc, value, type } = req.body;
 
             const expensesId = parseInt(id, 10);
 
@@ -21,7 +21,8 @@ export default {
                 where: { id: expensesId },
                 data: {
                     desc: desc,
-                    value: value
+                    value: value,
+                    type: type
                 }
             });
 
